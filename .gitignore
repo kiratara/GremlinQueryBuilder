@@ -32,3 +32,7 @@ dmypy.json
 setup.txt
 To do
 .DS_Store
+
+dist/
+build/
+*.egg-info/
