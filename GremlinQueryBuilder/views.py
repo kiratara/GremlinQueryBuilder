@@ -10,6 +10,7 @@ Contains following views/functions:
 
 
 from GremlinQueryBuilder import app
+from flask import render_template
 
 
 @app.route('/')
