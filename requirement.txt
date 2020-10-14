@@ -1,0 +1,5 @@
+aenum==2.2.4
+gremlinpython==3.4.8
+isodate==0.6.0
+six==1.15.0
+tornado==5.1.1
