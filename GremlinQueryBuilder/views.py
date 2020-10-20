@@ -16,4 +16,9 @@ from flask import render_template
 @app.route('/')
 def index():
     # return 'Hello, World! This is the index page'
-    return render_template('index.html')
+    return render_template('home.html')
+
+
+@app.route('/query')
+def build_query():
+    return render_template('query.html')

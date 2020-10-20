@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+nav{
+    float:right;
+}
+
+.logo img{
+    float:left;
+}
+
+.nav-list li{
+  display: inline-block; 
+  padding:10px;
+  font-size:20px; 
+  font-family:raleway;
+}
+
+.nav-list li:hover{
+  color: var(--section-tagline-color);
+  
+}
+.nav-link{
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+
+/* footer */
+#footer li{
+    display: inline;
+    font-family: raleway;
+    font-size: var(--font-size-small);
+    margin: 1rem;
+
+}
+
+.footer-item{
+    color: #81898f;
+    text-decoration: none;
+}
+

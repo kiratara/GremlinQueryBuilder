@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block custom_style%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
+{% endblock %}
+{% block title %}
+GQB - Home
+{% endblock %}
+
+<!-- {% block nav %}
+
+{% endblock %} -->
+{% block main %}
+<!-- SECTION INTRO -->
+<section id="section-intro" class="section">
+    <!-- <div class="nav-container"> -->
+        <div class="section-body">
+            <section class="section-inner">
+                <!-- Image and Title over image go here -->
+                <img class="intro-img" src="{{ url_for('static', filename='img/air-route.png') }}" alt="Graph Image large" height="600px" width=100%>
+                <h2 class="intro-title" class="section-title"> </h2>
+            </section>
+        </div>
+    <!-- </div> -->
+</section>
+<!-- SECTION QUERY -->
+<section>
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="col">
+                    <label for="entity">Select Entity</label>
+                    <select class="custom-select" id="entity">
+                        <option selected value="V()">Vertex</option>
+                        <option value="E()">Edge</option>
+                    </select>              
+                </div>
+                <div class="col">
+                <label for="property-name">Property Name</label>
+                <select class="custom-select" id="property-name">
+                    <option selected ></option>
+                    <option value="1">One</option>
+                </select>             
+                </div>
+                <div class="col">
+                    <label for="property-value">Property Value</label>
+                    <select class="custom-select" id="property-value">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>             
+                </div> 
+                <div class="col">
+                    <label for="property-value">Get query and actual result</label> <br>
+                    <button class="btn btn-dark" type="submit">Get Query</button>
+                </div>
+            </div> 
+        </form>
+    </div>
+</section>
+<!-- SECTION RESULT -->
+<section class="section">
+    <div class="container">
+        <p> g.V().count()</p>
+    </div>
+</section>
+<!-- SECTION ABOUT  -->
+<!-- <section id="about" class="section">
+    <div class="container">
+        <div class="section-about">
+            <header class="section-header">
+                <h2 class="section-title">About</h2>
+                    <p class="section-tagline">What and why</p>
+            </header>
+            <div class="section-body" >
+                <div class="about-item">
+                    <img src="{{ url_for('static', filename='img/slackline-blue.jpg') }}" alt="" width="400" height="400">
+                </div>
+                <div class="about-item">
+                    <h3>What is Gremlin</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, tempore voluptate et a natus quisquam odio magnam eligendi impedit quidem ullam voluptas dignissimos saepe temporibus nulla? Pariatur voluptates est exercitationem.</p>
+                    <h3>Why this site</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quasi voluptas earum explicabo saepe culpa nam quam, quo debitis quia quod iusto obcaecati corporis molestias officiis! Doloremque repellat sunt optio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- SECTION QUERY resources -->
+<section id="resources" class="section">
+        <div class="container">
+            <div class="section-resource">
+                <header class="section-header">
+                    <h1 class="section-title">Continue Learning</h1>
+                    <p class="section-tagline">Related Resources</p>
+                </header>
+                <div id="resource-item-container" class="section-body" >
+                        <div class="resources-item">
+                            <h3 class="resources-item-title"> <a href="#">Gremlin</a></h3>
+                        </div>
+                        <div class="resources-item">
+                            <h3 class="resources-item-title"> <a href="#">Graph DB</a></h3>
+                        </div>
+                        <div class="resources-item">
+                            <h3 class="resources-item-title"> <a href="#">TinkerPop</a></h3>
+                        </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

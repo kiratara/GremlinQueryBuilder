@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block custom_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/query.css') }}"/>
+{% endblock %}
+
+{% block title %}
+    GQB - Build
+{% endblock%}
+
+{% block main  %}
+    <!-- <section id="build-your-query" class="section">
+        <div class="container">
+            <header class="section-header">
+                    <h2>Let's Build</h2>
+            </header>
+            <form action="">
+                <div class="form-container">
+                    <div class="query-option">
+                        <label for="query">Build your own query:</label>
+                        <select id="query" name="element" >
+                            <option value="V()">Vertex</option>
+                            <option value="E()">Edge</option>
+                        </select>
+                    </div>
+                    <div class="query-option">
+                        <label for="result-type">Select option</label>
+                        <select id="result-type" name="element">
+                            <option value="V()">Count</option>
+                            <option value="E()">Value</option>
+                        </select>
+                    </div>
+                    <div class="query-option">
+                        <input type="submit" value="Go">
+                    </div>
+                </div>
+            </form>
+    </div>
+    </section> -->
+    <!-- <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+              </div>
+            </div>
+    </form> -->
+
+    <form>
+        <div class="row">
+            <div class="col">
+                <label for="entity">Select Entity</label>
+                <select class="custom-select" id="entity">
+                    <option selected value="V()">Vertex</option>
+                    <option value="E()">Edge</option>
+                </select>              
+            </div>
+            <div class="col">
+            <label for="property-name">Property Name</label>
+            <select class="custom-select" id="property-name">
+                <option selected ></option>
+                <option value="1">One</option>
+            </select>             
+            </div>
+            <div class="col">
+                <label for="property-value">Property Value</label>
+                <select class="custom-select" id="property-value">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>             
+            </div> 
+        </div> 
+        <button action= "class="btn btn-dark" type="submit">Get Query</button>
+    </form>
+{% endblock %}
