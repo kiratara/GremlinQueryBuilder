@@ -14,11 +14,10 @@ from flask import render_template
 
 
 @app.route('/')
-def index():
-    # return 'Hello, World! This is the index page'
+def home():
     return render_template('home.html')
 
 
-@app.route('/query')
-def build_query():
-    return render_template('query.html')
+@app.route('/about')
+def about():
+    return render_template('about.html')
