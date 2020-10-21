@@ -7,13 +7,34 @@
 GQB - Home
 {% endblock %}
 
-<!-- {% block nav %}
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url_for('home')}}">Gremlin Query Builder</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#query-builder">Build</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#resources">Resources</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('about') }}">About</a>
+            </li>
+            </ul>
+        </div>
+    </nav> 
+{% endblock %}
 
-{% endblock %} -->
 {% block main %}
 <!-- SECTION INTRO -->
 <section id="section-intro" class="section">
-    <!-- <div class="nav-container"> -->
         <div class="section-body">
             <section class="section-inner">
                 <!-- Image and Title over image go here -->
@@ -21,11 +42,14 @@ GQB - Home
                 <h2 class="intro-title" class="section-title"> </h2>
             </section>
         </div>
-    <!-- </div> -->
 </section>
 <!-- SECTION QUERY -->
 <section>
-    <div class="container">
+    <div class="container" id="query-builder">
+        <header class="section-header">
+            <h1 class="section-title">Try It Yourself</h1>
+            <p class="section-tagline">Let's build</p>
+        </header>
         <form>
             <div class="row">
                 <div class="col">
@@ -65,28 +89,6 @@ GQB - Home
         <p> g.V().count()</p>
     </div>
 </section>
-<!-- SECTION ABOUT  -->
-<!-- <section id="about" class="section">
-    <div class="container">
-        <div class="section-about">
-            <header class="section-header">
-                <h2 class="section-title">About</h2>
-                    <p class="section-tagline">What and why</p>
-            </header>
-            <div class="section-body" >
-                <div class="about-item">
-                    <img src="{{ url_for('static', filename='img/slackline-blue.jpg') }}" alt="" width="400" height="400">
-                </div>
-                <div class="about-item">
-                    <h3>What is Gremlin</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, tempore voluptate et a natus quisquam odio magnam eligendi impedit quidem ullam voluptas dignissimos saepe temporibus nulla? Pariatur voluptates est exercitationem.</p>
-                    <h3>Why this site</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quasi voluptas earum explicabo saepe culpa nam quam, quo debitis quia quod iusto obcaecati corporis molestias officiis! Doloremque repellat sunt optio.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 <!-- SECTION QUERY resources -->
 <section id="resources" class="section">
         <div class="container">
