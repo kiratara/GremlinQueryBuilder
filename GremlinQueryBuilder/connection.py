@@ -27,13 +27,6 @@ def connect():
     # Reuse 'g' across the application
 
 
-def load_data():
-    '''Load air-routes data to the Gremlin server'''
-
-    # command to load graphml on to locally run Gremlin Server
-    client.submit("graph.io(graphml()).readGraph('/Users/binita/Documents/GremlinQueryBuilder/data/air-routes-small.graphml');[]").all().result()
-
-
 # Query testing
 vertex_count = g.V().count().next()
 
