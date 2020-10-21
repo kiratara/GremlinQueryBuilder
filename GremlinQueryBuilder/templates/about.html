@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block custom_style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}"/>
+{% endblock %}
+
+{% block title %}
+    GQB - Build
+{% endblock%}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Gremlin Query Builder</a>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"> </span>
+        </button> -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                    <a class="nav-link" href= "{{ url_for('home') }}">Home</a>
+                </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="">About<span class="sr-only">(current)</span></a>
+            </li>
+            </ul>
+        </div>
+    </nav> 
+    {% endblock %}
+{% block main  %}
+<!-- SECTION ABOUT  -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="section-about">
+            <header class="section-header">
+                <h2 class="section-title">About</h2>
+                    <p class="section-tagline">What and why</p>
+            </header>
+            <div class="section-body" >
+                <div class="about-item">
+                    <img src="{{ url_for('static', filename='img/slackline-blue.jpg') }}" alt="" width="400" height="400">
+                </div>
+                <div class="about-item">
+                    <h3>What is Gremlin</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, tempore voluptate et a natus quisquam odio magnam eligendi impedit quidem ullam voluptas dignissimos saepe temporibus nulla? Pariatur voluptates est exercitationem.</p>
+                    <h3>Why this site</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quasi voluptas earum explicabo saepe culpa nam quam, quo debitis quia quod iusto obcaecati corporis molestias officiis! Doloremque repellat sunt optio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
