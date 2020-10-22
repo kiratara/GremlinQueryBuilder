@@ -22,9 +22,6 @@ GQB - Home
                 <a class="nav-link" href="#query-builder">Build</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#resources">Resources</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('about') }}">About</a>
             </li>
             </ul>
@@ -50,67 +47,43 @@ GQB - Home
             <h1 class="section-title">Try It Yourself</h1>
             <p class="section-tagline">Let's build</p>
         </header>
-        <form>
-            <div class="row">
+        <!-- <form action="/selection"> -->
+            <div class="row" class="form-group">
                 <div class="col">
                     <label for="entity">Select Entity</label>
-                    <select class="custom-select" id="entity">
+                    <select class="custom-select" id="entity" onchange="updatePropertyNameOptions();">
                         <option selected value="V()">Vertex</option>
                         <option value="E()">Edge</option>
                     </select>              
                 </div>
                 <div class="col">
-                <label for="property-name">Property Name</label>
-                <select class="custom-select" id="property-name">
-                    <option selected ></option>
-                    <option value="1">One</option>
+                <label for="PropertyName">Property Name</label>
+                <select class="custom-select" id="propertyName" onchange="updatePropertyValueOptions();">
+                    <option selected value="label">label</option>
+                    <option value="code">code</option>
+                    <option value="city">city</option>
+                    <option value="country">country</option>
+                    <option value="runaways">runaways</option>
                 </select>             
                 </div>
                 <div class="col">
-                    <label for="property-value">Property Value</label>
-                    <select class="custom-select" id="property-value">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <label for="propertyValue">Property Value</label>
+                    <select class="custom-select" id="propertyValue">
+                        <option selected value="airport">airport</option>
                     </select>             
                 </div> 
                 <div class="col">
-                    <label for="property-value">Get query and actual result</label> <br>
-                    <button class="btn btn-dark" type="submit">Get Query</button>
+                    <label>Get query and actual result</label> <br>
+                    <button class="btn btn-dark" type="submit" onclick="getQueryResult();">Get Query</button>
                 </div>
             </div> 
-        </form>
+        <!-- </form> -->
     </div>
 </section>
 <!-- SECTION RESULT -->
 <section class="section">
     <div class="container">
-        <p> g.V().count()</p>
+        <p id="basicQueryString"> </p>
     </div>
 </section>
-<!-- SECTION QUERY resources -->
-<section id="resources" class="section">
-        <div class="container">
-            <div class="section-resource">
-                <header class="section-header">
-                    <h1 class="section-title">Continue Learning</h1>
-                    <p class="section-tagline">Related Resources</p>
-                </header>
-                <div id="resource-item-container" class="section-body" >
-                        <div class="resources-item">
-                            <h3 class="resources-item-title"> <a href="#">Gremlin</a></h3>
-                        </div>
-                        <div class="resources-item">
-                            <h3 class="resources-item-title"> <a href="#">Graph DB</a></h3>
-                        </div>
-                        <div class="resources-item">
-                            <h3 class="resources-item-title"> <a href="#">TinkerPop</a></h3>
-                        </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 {% endblock %}
