@@ -57,7 +57,7 @@ GQB - Home
           </div>
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
-        <!-- <form > Count() -->
+            <!-- <form > Count() -->
                 <div class="row" class="form-group">
                     <div class="col">
                         <label for="entityCount">Select Entity</label>
@@ -114,15 +114,15 @@ GQB - Home
         <!-- <form > Value() -->
             <div class="row" class="form-group">
                     <div class="col">
-                        <label for="entityValue">Select Entity</label>
-                        <select class="custom-select" id="entityValue" onchange="updatePropertyNameOptions('Value');">
+                        <label for="entityValues">Select Entity</label>
+                        <select class="custom-select" id="entityValues" onchange="updatePropertyNameOptions('Values');">
                             <option selected value="V()">Vertex</option>
                             <option value="E()">Edge</option>
                         </select>              
                     </div>
                     <div class="col">
-                    <label for="PropertyNameValue">Property Name</label>
-                    <select class="custom-select" id="propertyNameValue" onchange="updatePropertyValueOptions('Value');">
+                    <label for="propertyNameValues">Property Name</label>
+                    <select class="custom-select" id="propertyNameValues" onchange="updatePropertyValueOptions('Values');">
                         <option selected value="label">label</option>
                         <option value="code">code</option>
                         <option value="city">city</option>
@@ -131,35 +131,38 @@ GQB - Home
                     </select>             
                     </div>
                     <div class="col">
-                        <label for="propertyValueValue">Property Value</label>
-                        <select class="custom-select" id="propertyValueValue">
+                        <label for="propertyValueValues">Property Value</label>
+                        <select class="custom-select" id="propertyValueValues">
                             <option selected value="airport">airport</option>
                         </select>             
                     </div>
                     <div class="col">
-                        <label for="resultValueValue">Result Value</label>
+                        <label for="resultValueValues">Result Value</label>
                         <select class="custom-select" id="resultValueValue">
-                            <option selected value="value">value</option>
+                            <option selected value="values">values</option>
                         </select>             
                     </div> 
                     <div class="col">
-                        <label for="resultValueOptionsValue">Which Values</label>
-                        <select class="custom-select" id="resultValueOptionsValue" multiple>
-                            <option selected value="value">all</option>
-                            <option value="">test</option>
-                            <option value="">test</option>
+                        <label for="resultValueOptionsValues">Which Values</label>
+                        <select class="custom-select" id="resultValueOptionsValues" multiple>
+                            <option selected value="values">all</option>
+                            <option value="label">label</option>
+                            <option value="code">code</option>
+                            <option value="city">city</option>
+                            <option value="country">country</option>
+                            <option value="runaways">runaways</option>
                         </select>             
                     </div>   
                     <div class="col">
                         <label>Get query and actual result</label> <br>
-                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('Value');">Get Query</button>
+                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('Values');">Get Query</button>
                     </div>
                 </div> 
         <!-- </form> -->            
             </div>
             <!-- RESULT CONTAINER Value()-->
-            <div class="container" class="code">
-                <h5 id="basicQueryStringValue"> QUERY RESULT </h5>
+            <div class="container" class="values">
+                <h5 id="basicQueryStringValues"> QUERY RESULT </h5>
             </div>
           </div>
         </div>
@@ -176,15 +179,15 @@ GQB - Home
         <!-- <form > ValueMap()-->
             <div class="row" class="form-group">
                     <div class="col">
-                        <label for="entityValue">Select Entity</label>
-                        <select class="custom-select" id="entityValue" onchange="updatePropertyNameOptions('Value');">
+                        <label for="entityValueMap">Select Entity</label>
+                        <select class="custom-select" id="entityValueMap" onchange="updatePropertyNameOptions('ValueMap');">
                             <option selected value="V()">Vertex</option>
                             <option value="E()">Edge</option>
                         </select>              
                     </div>
                     <div class="col">
-                    <label for="PropertyNameValue">Property Name</label>
-                    <select class="custom-select" id="propertyNameValue" onchange="updatePropertyValueOptions('Value');">
+                    <label for="PropertyNameValueMap">Property Name</label>
+                    <select class="custom-select" id="propertyNameValueMap" onchange="updatePropertyValueOptions('ValueMap');">
                         <option selected value="label">label</option>
                         <option value="code">code</option>
                         <option value="city">city</option>
@@ -193,60 +196,63 @@ GQB - Home
                     </select>             
                     </div>
                     <div class="col">
-                        <label for="propertyValueValue">Property Value</label>
-                        <select class="custom-select" id="propertyValueValue">
+                        <label for="propertyValueValueMap">Property Value</label>
+                        <select class="custom-select" id="propertyValueValueMap">
                             <option selected value="airport">airport</option>
                         </select>             
                     </div>
                     <div class="col">
-                        <label for="resultValueValue">Result Value</label>
-                        <select class="custom-select" id="resultValueValue">
+                        <label for="resultValueValueMap">Result Value</label>
+                        <select class="custom-select" id="resultValueValueMap">
                             <option selected value="value">value</option>
                         </select>             
                     </div> 
                     <div class="col">
-                        <label for="resultValueOptionsValue">Which Values</label>
-                        <select class="custom-select" id="resultValueOptionsValue" multiple>
+                        <label for="resultValueOptionsValueMap">Which Values</label>
+                        <select class="custom-select" id="resultValueOptionsValueMap" multiple>
                             <option selected value="value">all</option>
-                            <option value="">test</option>
-                            <option value="">test</option>
+                            <option value="label">label</option>
+                            <option value="code">code</option>
+                            <option value="city">city</option>
+                            <option value="country">country</option>
+                            <option value="runaways">runaways</option>
                         </select>             
                     </div>   
                     <div class="col">
                         <label>Get query and actual result</label> <br>
-                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('Value');">Get Query</button>
+                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('ValueMap');">Get Query</button>
                     </div>
                 </div> 
             <!-- </form> -->             
             </div>
             <!-- RESULT CONTAINER ValueMap()-->
             <div class="container" class="code">
-                <h5 id="basicQueryStringValue"> QUERY RESULT </h5>
+                <h5 id="basicQueryStringValueMap"> QUERY RESULT </h5>
             </div>  
         </div>
         </div>
         <div class="card">
-        <div class="card-header" id="headingThree">
+        <div class="card-header" id="headingFour">
             <h5 class="mb-0">
-            <button class="btn btn-info btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Traversal #3
+            <button class="btn btn-info btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Traversal 
             </button>
             </h5>
         </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
             <div class="card-body">
         <!-- <form > Traversal-->
             <div class="row" class="form-group">
                     <div class="col">
-                        <label for="entityValue">Select Entity</label>
-                        <select class="custom-select" id="entityValue" onchange="updatePropertyNameOptions('Value');">
+                        <label for="entityValueTraversal">Select Entity</label>
+                        <select class="custom-select" id="entityValueTraversal" onchange="updatePropertyNameOptions('ValueTraversal');">
                             <option selected value="V()">Vertex</option>
                             <option value="E()">Edge</option>
                         </select>              
                     </div>
                     <div class="col">
-                    <label for="PropertyNameValue">Property Name</label>
-                    <select class="custom-select" id="propertyNameValue" onchange="updatePropertyValueOptions('Value');">
+                    <label for="PropertyNameValueTraversal">Property Name</label>
+                    <select class="custom-select" id="propertyNameValueTraversal" onchange="updatePropertyValueOptions('ValueTraversal');">
                         <option selected value="label">label</option>
                         <option value="code">code</option>
                         <option value="city">city</option>
@@ -255,39 +261,42 @@ GQB - Home
                     </select>             
                     </div>
                     <div class="col">
-                        <label for="propertyValueValue">Property Value</label>
-                        <select class="custom-select" id="propertyValueValue">
+                        <label for="propertyValueValueTraversal">Property Value</label>
+                        <select class="custom-select" id="propertyValueValueTraversal">
                             <option selected value="airport">airport</option>
                         </select>             
                     </div>
                     <div class="col">
-                        <label for="resultValueValue">Result Value</label>
-                        <select class="custom-select" id="resultValueValue">
-                            <option selected value="value">value</option>
+                        <label for="resultValueValueTraversal">Result Value</label>
+                        <select class="custom-select" id="resultValueValueTraversal">
+                            <option selected value="valueMap()">valueMap()</option>
                         </select>             
                     </div> 
                     <div class="col">
-                        <label for="resultValueOptionsValue">Which Values</label>
-                        <select class="custom-select" id="resultValueOptionsValue" multiple>
+                        <label for="resultValueOptionsTraversal">Which Values</label>
+                        <select class="custom-select" id="resultValueOptionsTraversal" multiple>
                             <option selected value="value">all</option>
-                            <option value="">test</option>
-                            <option value="">test</option>
+                            <option value="label">label</option>
+                            <option value="code">code</option>
+                            <option value="city">city</option>
+                            <option value="country">country</option>
+                            <option value="runaways">runaways</option>
                         </select>             
                     </div>   
                     <div class="col">
                         <label>Get query and actual result</label> <br>
-                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('Value');">Get Query</button>
+                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('ValueTraversal');">Get Query</button>
                     </div>
                 </div> 
             <!-- </form> -->             
         </div>
         <!-- RESULT CONTAINER Traversal()-->
-        <div class="container" class="code">
-            <h5 id="basicQueryStringTraversal"> QUERY RESULT </h5>
+        <div class="container" class="codeTraversal">
+            <h5 id="basicQueryStringTraversalTraversal"> QUERY RESULT </h5>
         </div>     
         </div>
         </div>
-</div>
+    </div>
 </section>
 <!-- SECTION RESULT -->
 <section class="section">

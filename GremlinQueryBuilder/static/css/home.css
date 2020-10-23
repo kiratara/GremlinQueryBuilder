@@ -95,34 +95,12 @@ body{
     flex-wrap: nowrap;
 }
 
-#resource-item-container{
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.resources-item{
-    background-color: var(--color-light-grey);
-    padding: 1.2rem 5rem;
-    
-}
-
-.resources-item a {
-    text-decoration: none;
-    color: var(--color-black);
-}
-
-#resources .container {
-    border-top: solid #797d80;
-    padding: 1rem 1rem;
-
-}
-
 .section-intro{
     background-color: pink;
     border: solid black 4px;
 }
+
+.code {
+    background-color:#EEEEEE;
+    font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+  }
