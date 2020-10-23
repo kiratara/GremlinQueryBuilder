@@ -7,22 +7,30 @@
  * valueMap - g.V().has(property, value).valueMap(options- properties)
  *  
  */
+
+
 var vertexPropertyOptions = ["label", "code", "city", "country", "runaways"]
 var edgePropertyOptions = ["label", "dist"]
 
-var vertexPropertyNameOptions = {
-    "label": ["airport"],
-    "code": ["ATL", "ANC", "MSP", "SNA", "SJU", "OAK"],
-    "city": ["Atlanta", "Anchorage", "Minneapolis", "Santa Ana", "San Juan", "Oakland"],
-    "country": ["US", "PR"],
-    "runaways": [2, 3, 4, 5]
+const vertexPropertyNameOptions = {
+    "label": ["all", "airport"],
+    "code": ["all", "ATL", "ANC", "MSP", "SNA", "SJU", "OAK"],
+    "city": ["all", "Atlanta", "Anchorage", "Minneapolis", "Santa Ana", "San Juan", "Oakland"],
+    "country": ["all", "US", "PR"],
+    "runaways": ["all", 2, 3, 4, 5]
 }
 
-var edgePropertyNameOptions = {
-    "label": ["route"],
-    "dist": [906, 1910, 1550, 2124, 2519, 906, 1522, 1578, 1522, 370, 2124, 910]
+const edgePropertyNameOptions = {
+    "label": ["all", "route"],
+    "dist": ["all", 370, 906,  910, 1522, 1550, 1578, 1910,  2124, 2519]
 }
 
+const contextMap = {
+    "Count" : "count",
+    "Values" : "values",
+    "ValueMap" : "valueMap"
+
+}
 /**
  * Remove option children of select element
  * @param {Element} selectElement 
@@ -55,8 +63,9 @@ function updateSelectOption(selectElement, options){
  * Capture selected value of entity and update 
  * select options for next (property name ) selections
  */
-function updatePropertyNameOptions() {
-    var entity = document.getElementById("entity");
+function updatePropertyNameOptions(context) {
+    console.log("updatePropertyNameOptions function triggered with content: " + context)
+    var entity = document.getElementById("entity" + context);
     var entityValue = entity.value;
 
     if (entityValue == "V()") {
@@ -64,21 +73,23 @@ function updatePropertyNameOptions() {
     } else {
         options = ["label", "dist"]
     }
-    propertyNameElement = document.getElementById("propertyName");
+    propertyNameElement = document.getElementById("propertyName" + context);
     removeSelectOption(propertyNameElement);
     // also update propertyValue to include values for label by default
-    propertyValueElement = document.getElementById("propertyValue");
+    propertyValueElement = document.getElementById("propertyValue" + context);
     removeSelectOption(propertyValueElement);
-    setDefaultLabelOption(entity);
+    setDefaultLabelOption(entity, context);
     updateSelectOption(propertyNameElement, options);
+    update_multi_select_options(entityValue, context);
 }
 
 /**
  * Captures entity and propertyName and updates the propertyValue options
  */
-function updatePropertyValueOptions(){
-    var entity = document.getElementById("entity");
-    var propertyName = document.getElementById("propertyName")
+function updatePropertyValueOptions(context){
+    console.log("updatePropertyValueOptions function triggered with content: " + context)
+    var entity = document.getElementById("entity" + context);
+    var propertyName = document.getElementById("propertyName" + context)
 
     var entityValue = entity.value;
     var propertyName = propertyName.value;
@@ -88,35 +99,58 @@ function updatePropertyValueOptions(){
         options = vertexPropertyNameOptions[propertyName]
     } else {
         options = edgePropertyNameOptions[propertyName]
+        // options.sort((a, b) => a - b);
     } 
-    propertyValueElement = document.getElementById("propertyValue");
+    propertyValueElement = document.getElementById("propertyValue" + context);
     removeSelectOption(propertyValueElement);
     updateSelectOption(propertyValueElement, options);
+    update_multi_select_options(entityValue, context);
 }
 
+function update_multi_select_options(entityValue, context){
+    console.log("update_multi_select_options: Current entity value is " + entityValue + "and context: " + context);
+    if (context !== "Count"){
+        // If context is Value then depending on what entity and property (though doesn't matter for in this case since we only have one nodetype)
+        valueOptionElement = document.getElementById("resultValueOptions"  + context);
+        removeSelectOption(valueOptionElement);
+        updateSelectOption(valueOptionElement, ["all"])    
+        if (entityValue === "V()"){
+            updateSelectOption(valueOptionElement, vertexPropertyOptions)
+        } else {
+            updateSelectOption(valueOptionElement, edgePropertyOptions)
+        }
+    }
 
-function setDefaultLabelOption(entity){
+}
+
+function setDefaultLabelOption(entity, context){
     var vertexOptions = ["airport"]
     var edgeOptions = ["route"];
-    propertyValueElement = document.getElementById("propertyValue");
+    resultValueSelections = document.getElementById("propertyValue" + context);
     if (entity == "V()"){
-        updateSelectOption(propertyValueElement, vertexOptions)
+        updateSelectOption(resultValueSelections, vertexOptions)
     } else {
-        updateSelectOption(propertyValueElement, edgeOptions)
+        updateSelectOption(resultValueSelections, edgeOptions)
     }
 }
 /**
  * onclick() for submit
  * query flask to get data and return the data + query value
  */
-function getQueryResult(){
-    var entity = document.getElementById("entity");
-    var propertyName = document.getElementById("propertyName");
-    var propertyValue = document.getElementById("propertyValue");
+function getQueryResult(context){
+    var entity = document.getElementById("entity" + context),
+        propertyName = document.getElementById("propertyName" + context),
+        propertyValue = document.getElementById("propertyValue" + context),
+        resultValue = document.getElementById("resultValue" + context);
+        // result options only applies to Value, ValueMap and Traversal cards
+        var resultValueOptions;
+        if (context !== "Count") {
+            resultValueOptions = get_multiple_selection_values(context);
+        }
 
     // create value to send to flask route
     var options = {
-        entity: entity.value,
+        entityValue: entity.value,
         propertyName: propertyName.value,
         propertyValue: propertyValue.value
     };
@@ -141,17 +175,65 @@ function getQueryResult(){
     //         console.log(data)
     //     })
     // })
-    create_basic_query(options);
+    createBasicQuery(options, context, resultValueOptions);
 }
 
+function get_multiple_selection_values(context){
+    var selected = [];
+    for (var option of document.getElementById('resultValueOptions' + context).options) {
+      if (option.selected) {
+        selected.push(option.value);
+      }
+    }
+    console.log("The values of selected Items are: " + selected);
+    return selected;
+}
 /**
  * create string query based on selections by user
  * @param {object} options 
  */
-function create_basic_query(options){
-    basicQueryString = "g." + options.entity + "."+ "has(\"" + options.propertyName + "\"\, \"" + options.propertyValue +  "\"\)";
-    console.log(basicQueryString);
-    queryParagraphElement = document.getElementById("basicQueryString");
+function createBasicQuery(options, context, resultValueOptions){
+    var propertyValue  = options.propertyValue,
+        propertyName = options.propertyName,
+        entityValue = options.entityValue;
+    if (entityValue === "V()"){
+        var options = addQuotesAroundString(vertexPropertyOptions);
+    } else {
+        var options = addQuotesAroundString(edgePropertyOptions);
+    }
+
+    var queryStringPartOne = "g." + entityValue + "."+ "has(\'" + propertyName + "\'";
+    // check if user selected having specific property value or just having that property
+    if (propertyValue === "all"){
+        queryStringPartTwo =  ")." + contextMap[context] + "(";
+    } else {
+        queryStringPartTwo = ",\'" + propertyValue +  "\'\)." + contextMap[context] + "(";
+    }  
+
+    if (context === "Count"){
+        var queryStringPartThree =  ")"
+    } else {
+        var withQuotesValueOptions = addQuotesAroundString(resultValueOptions);
+        if ( resultValueOptions !== undefined && resultValueOptions.includes("all")) {
+            queryStringPartThree = ")";
+        } else {
+            queryStringPartThree = withQuotesValueOptions + ")";
+        }        
+    }
+    // check if user wants specific property result or all / value("dist") / valueMap("dist")
+
+    const queryString = queryStringPartOne + queryStringPartTwo + queryStringPartThree;
+    console.log(queryString);
+    updateQueryString(queryString, context);
+}
+
+
+function addQuotesAroundString(array){
+    var result = array.map(function(x) { return "'" + x + "'"});
+    return result
+}
+function updateQueryString(queryString, context){
+    queryParagraphElement = document.getElementById("basicQueryString" + context);
     queryParagraphElement.innerText = '';
-    queryParagraphElement.innerText = basicQueryString;
+    queryParagraphElement.innerText = queryString;
 }
