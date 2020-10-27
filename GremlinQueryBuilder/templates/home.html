@@ -8,50 +8,94 @@ GQB - Home
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-custon">
         <a class="navbar-brand" href="{{ url_for('home')}}">Gremlin Query Builder</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#query-builder">Build</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('about') }}">About</a>
-            </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#query-builder">Build</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">Read More</a>
+                </li>
             </ul>
         </div>
     </nav> 
 {% endblock %}
 
 {% block main %}
-<!-- SECTION INTRO -->
-<section id="section-intro" class="section">
-        <div class="section-body">
-            <section class="section-inner">
-                <!-- Image and Title over image go here -->
-                <img class="intro-img" src="{{ url_for('static', filename='img/air-route.png') }}" alt="Graph Image large" height="600px" width=100%>
-                <h2 class="intro-title" class="section-title"> </h2>
-            </section>
+<section class="section">
+<div class="container">
+    <div class="row card-deck">
+        <div class="card card-image1">
+            <a href="#headingOne">
+                <img class="card-img-top" src="{{ url_for('static', filename='img/image1.png') }}"  alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">Select Vertices</h4>
+                    <p class="card-text image1-text">Select all Vertices that meet a condition. Here: All vertices that have value "US" for the key "country".</p>
+                </div>
+            </a>
         </div>
+        <div class="card card-image2">
+            <a href="#headingTwo">
+                <img class="card-img-top" src="{{ url_for('static', filename='img/image2.png') }}" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">Select Edges</h4>
+                    <p class="card-text">Select all edges in a given graph.</p>
+                </div>
+            </a>
+        </div>
+        <div class="card card-image3">
+            <a href="#headingThree">
+                <img class="card-img-top" src="{{ url_for('static', filename='img/image3.png') }}" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">Select Edge by Traversal</h4>
+                    <p class="card-text">Select all the edges that are going in or out of the vertex with code "MSP".</p>
+                </div>
+            </a>
+        </div>
+        <div class="card card-image4">
+            <a href="#headingFour">
+                <img class="card-img-top" src="{{ url_for('static', filename='img/image4.png') }}" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">Select Vertices by Traversal</h4>
+                    <p class="card-text">Select all vertices that have in/out edge connection <i>from</i> vertex with code "OAK".</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 </section>
 <!-- SECTION QUERY -->  
-<section class="section" id="query-builder">
+<section class="section">
+    <div class="container">
+        <header><h1> What is Gremlin? </h1></header>
+        <blockquote cite="https://docs.janusgraph.org/basics/gremlin/">
+            <p>
+                Gremlin is JanusGraph’s query language used to retrieve data from and modify data in the graph. Gremlin is a path-oriented language which succinctly expresses complex graph traversals and mutation operations. Gremlin is a functional language whereby traversal operators are chained together to form path-like expressions. 
+            </p>
+            <cite> <a href="https://docs.janusgraph.org/basics/gremlin/">-Janusgraph Doc</a></cite>
+        </blockquote>
+    </div>
+</section>
+<section class="section" >
+    <div class="container" id="query-builder">
         <header class="section-header">
-            <h1 class="section-title">Do It Yourself </h1>
+            <h1 class="section-title">Try It Yourself </h1>
             <p class="section-tagline">Build</p>
         </header>
     <div id="accordion">
-        <div class="card">
-          <div class="card-header" id="headingOne" >
+        <div class="card border-0">
+          <div class="card-header border-1 card-title-custom" id="headingOne" >
             <h5 class="mb-0">
-              <button class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Basic quries: Returns [TinkerPop Vertex data structure] Vertex with an ID # - Or This query returns Vertex[ID] for those that match the condition.
+              <button class="btn btn-lg btn-block card-title-custom" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Count
               </button>
             </h5>
           </div>
@@ -89,22 +133,25 @@ GQB - Home
                         </select>             
                     </div>  
                     <div class="col">
-                        <label>Get query and actual result</label> <br>
-                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('Count');">Get Query</button>
+                        <label><br></label> <br>
+                        <button class="btn btn-custom" type="submit" onclick="getQueryResult('Count');">Get Query</button>
                     </div>
                 </div> 
         <!-- </form> -->
             </div>
-            <!-- RESULT CONTAINER Count()-->
-            <div class="container" class="code">
-                <h5 id="basicQueryStringCount"> QUERY RESULT </h5>
+            <!-- COUNT RESULT -->
+            <div class="card text-center border-0">
+                <div class="card-body text-white query-result">
+                        <h5 id="basicQueryStringCount"> QUERY RESULT </h5>
+                </div>
+                <!-- <img class="card-img-bottom" src="{{ url_for('static', filename='img/air-route.png') }}" alt="Card image cap"> -->
             </div>
         </div>
         </div>
-        <div class="card">
-          <div class="card-header" id="headingTwo">
+        <div class="card border-0">
+          <div class="card-header border-1 card-title-custom" id="headingTwo" class="collapse">
             <h5 class="mb-0">
-              <button class="btn btn-info btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <button class="btn btn-lg btn-block collapsed card-title-custom" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Value
               </button>
             </h5>
@@ -112,7 +159,7 @@ GQB - Home
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
         <!-- <form > Value() -->
-            <div class="row" class="form-group">
+            <div class="row" id="valueForm" class="form-group">
                     <div class="col">
                         <label for="entityValues">Select Entity</label>
                         <select class="custom-select" id="entityValues" onchange="updatePropertyNameOptions('Values');">
@@ -154,23 +201,27 @@ GQB - Home
                         </select>             
                     </div>   
                     <div class="col">
-                        <label>Get query and actual result</label> <br>
-                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('Values');">Get Query</button>
+                        <label><br></label> <br>
+                        <button class="btn btn-custom" type="submit" onclick="getQueryResult('Values');">Get Query</button>
                     </div>
                 </div> 
         <!-- </form> -->            
             </div>
             <!-- RESULT CONTAINER Value()-->
-            <div class="container" class="values">
-                <h5 id="basicQueryStringValues"> QUERY RESULT </h5>
+            <!-- COUNT RESULT -->
+            <div class="card text-center border-0">
+                <div class="card-body text-white query-result">
+                    <h5 id="basicQueryStringValues"> QUERY RESULT </h5>
+                </div>
+                <!-- <img class="card-img-bottom" src="{{ url_for('static', filename='img/air-route.png') }}" alt="Card image cap"> -->
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header" id="headingThree">
+        <div class="card border-0">
+          <div class="card-header border-1 card-title-custom" id="headingThree">
             <h5 class="mb-0">
-              <button class="btn btn-info btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                ValueMap #3
+              <button class="btn btn-lg btn-block collapsed card-title-custom" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                ValueMap
               </button>
             </h5>
           </div>
@@ -219,22 +270,25 @@ GQB - Home
                         </select>             
                     </div>   
                     <div class="col">
-                        <label>Get query and actual result</label> <br>
-                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('ValueMap');">Get Query</button>
+                        <label><br></label> <br>
+                        <button class="btn btn-custom" type="submit" onclick="getQueryResult('ValueMap');">Get Query</button>
                     </div>
                 </div> 
             <!-- </form> -->             
             </div>
-            <!-- RESULT CONTAINER ValueMap()-->
-            <div class="container" class="code">
-                <h5 id="basicQueryStringValueMap"> QUERY RESULT </h5>
-            </div>  
+            <!-- COUNT RESULT -->
+            <div class="card text-center border-0">
+                <div class="card-body text-white query-result">
+                    <h5 id="basicQueryStringValueMap"> QUERY RESULT </h5>
+                </div>
+                <!-- <img class="card-img-bottom" src="{{ url_for('static', filename='img/air-route.png') }}" alt="Card image cap"> -->
+            </div>
         </div>
         </div>
-        <div class="card">
-        <div class="card-header" id="headingFour">
+        <div class="card border-0">
+        <div class="card-header border-1 card-title-custom" id="headingFour">
             <h5 class="mb-0">
-            <button class="btn btn-info btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <button class="btn btn-lg btn-block collapsed card-title-custom" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 Traversal 
             </button>
             </h5>
@@ -284,16 +338,19 @@ GQB - Home
                         </select>             
                     </div>   
                     <div class="col">
-                        <label>Get query and actual result</label> <br>
-                        <button class="btn btn-dark" type="submit" onclick="getQueryResult('ValueTraversal');">Get Query</button>
+                        <label> <br></label> <br>
+                        <button class="btn btn-custom" type="submit" onclick="getQueryResult('ValueTraversal');">Get Query</button>
                     </div>
                 </div> 
             <!-- </form> -->             
         </div>
-        <!-- RESULT CONTAINER Traversal()-->
-        <div class="container" class="codeTraversal">
-            <h5 id="basicQueryStringTraversalTraversal"> QUERY RESULT </h5>
-        </div>     
+            <!-- COUNT RESULT -->
+            <div class="card text-center border-0">
+                <div class="card-body text-white query-result">
+                    <h5 id="basicQueryStringTraversal"> QUERY RESULT </h5>
+                </div>
+                <!-- <img class="card-img-bottom" src="{{ url_for('static', filename='img/air-route.png') }}" alt="Card image cap"> -->
+            </div>    
         </div>
         </div>
     </div>
@@ -304,4 +361,5 @@ GQB - Home
         <p id="basicQueryString"> </p>
     </div>
 </section>
+</div>
 {% endblock %}
