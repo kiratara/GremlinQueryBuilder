@@ -9,19 +9,13 @@
 {% endblock%}
 
 {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-custon">
         <a class="navbar-brand" href="{{ url_for('home') }}">Gremlin Query Builder</a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"> </span>
-        </button> -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-            <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href= "{{ url_for('home') }}">Home</a>
                 </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="">About<span class="sr-only">(current)</span></a>
-            </li>
             </ul>
         </div>
     </nav> 
@@ -29,50 +23,64 @@
 {% block main  %}
 <!-- SECTION ABOUT  -->
 <section id="about" class="section">
-    <div class="container">
-        <div class="section-about">
+    <div class="container ">
+        <div class="d-flex justify-content-center">
             <header class="section-header">
-                <h2 class="section-title">About</h2>
+                <h1 class="section-title">About</h1>
                     <p class="section-tagline">What and why</p>
             </header>
-            <div class="section-body" >
-                <div class="about-item">
-                    <img src="{{ url_for('static', filename='img/slackline-blue.jpg') }}" alt="" width="400" height="400">
-                </div>
-                <div class="about-item">
-                    <h3>What is Gremlin</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, tempore voluptate et a natus quisquam odio magnam eligendi impedit quidem ullam voluptas dignissimos saepe temporibus nulla? Pariatur voluptates est exercitationem.</p>
-                    <h3>Why this site</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem quasi voluptas earum explicabo saepe culpa nam quam, quo debitis quia quod iusto obcaecati corporis molestias officiis! Doloremque repellat sunt optio.</p>
-                </div>
+        </div>
+
+        <div class=" d-flex flex-row section-body" >
+            <div class="p-2 about-item">
+                <img src="{{ url_for('static', filename='img/slackline-blue.jpg') }}" alt="" width="400" height="400">
+            </div>
+            <div class="p-2 about-item">
+                <h3>What is Gremlin</h3>
+                <p>
+                    <blockquote cite="https://tinkerpop.apache.org/gremlin.html">
+                        <p>
+                            "Gremlin is the graph traversal language of Apache TinkerPop. 
+                            Gremlin is a functional, data-flow language that enables users to succinctly express complex traversals on 
+                            (or queries of) their application's property graph...."
+                        </p> <cite>-https://tinkerpop.apache.org/gremlin.html</cite>
+                    </blockquote>
+                </p>
+                <h3>Why GQB?</h3>
+                <p>
+                    I built this site as another way to follow along with the Kevin Lawrence's 
+                    <a href="https://kelvinlawrence.net/book/Gremlin-Graph-Guide.html">Practical Gremlin.</a>
+                    It has been one of the most helpful resources on getting started with Gremlin. This project is intented to be used
+                    as a brief introduction to Gremlin before going into the full details and deep dive into the documentation itself.
+                </p>
             </div>
         </div>
     </div>
 </section>
 <!-- SECTION  resources -->
 <section id="resources" class="section">
-        <div class="container">
-            <div class="section-resource">
-                <header class="section-header">
-                    <h1 class="section-title">Continue Learning</h1>
-                    <p class="section-tagline">Related Resources</p>
-                </header>
-                <div id="resource-item-container" class="section-body" >
-                        <div class="resources-item">
-                            <h3 class="resources-item-title"> <a href="#">Gremlin</a></h3>
-                        </div>
-                        <div class="resources-item">
-                            <h3 class="resources-item-title"> <a href="#">Graph DB</a></h3>
-                        </div>
-                        <div class="resources-item">
-                            <h3 class="resources-item-title"> <a href="#">TinkerPop</a></h3>
-                        </div>
-                        </li>
-                    </ul>
-                </div>
+    <div class="container mt-5">
+        <div class="section-resource">
+            <header class="section-header">
+                <h1 class="section-title">Continue Learning</h1>
+                <p class="section-tagline">Related Resources</p>
+            </header>
+            <div id="resource-item-container" class="section-body" >
+                    <div class="resources-item">
+                        <h3 class="resources-item-title"> <a href="https://en.wikipedia.org/wiki/Gremlin_(query_language)">Wiki</a></h3>
+                    </div>
+                    <div class="resources-item">
+                        <h3 class="resources-item-title"> <a href="https://kelvinlawrence.net/book/Gremlin-Graph-Guide.html">Practical Gremlin</a></h3>
+                    </div>
+                    <div class="resources-item">
+                        <h3 class="resources-item-title"> <a href="https://tinkerpop.apache.org/docs/3.4.6/reference/">TinkerPop</a></h3>
+                    </div>
+                    </li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     
 {% endblock %}

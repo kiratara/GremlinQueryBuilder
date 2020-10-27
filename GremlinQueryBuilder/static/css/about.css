@@ -31,13 +31,19 @@
 body{
     background-color: var(--color-white);
 }
-.nav {
+.navbar-custon{
+    background-color:#4c5c68;
+}
 
+.navbar-brand{
+    color: black;
+}
+
+.nav-item a{
+    color: #f4f3ee;
 }
 .title {
     text-align: center;
-}
-.container {
 }
 
 .section-header{
